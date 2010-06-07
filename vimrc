@@ -33,9 +33,6 @@ nmap <D-4> g$
 nmap <D-6> g^
 nmap <D-0> g^
 
-"add some line space for easy reading
-set linespace=4
-
 "disable visual bell
 set visualbell t_vb=
 
@@ -198,8 +195,8 @@ function! s:Median(nums)
 endfunction
 
 "indent settings
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set autoindent
 
@@ -254,8 +251,7 @@ if has("gui_running")
 
     if has("gui_gnome")
         set term=gnome-256color
-        colorscheme ir_dark
-        set guifont=Inconsolata\ Medium\ 12
+        colorscheme desert
     else
         colorscheme railscasts
         set guitablabel=%M%t
@@ -269,7 +265,7 @@ if has("gui_running")
         "macmenu &File.New\ Tab key=<nop>
         "map <D-t> :CommandT<CR>
         " make Mac's Option key behave as the Meta key
-        set invmmta
+        " set invmmta
     endif
     if has("gui_win32") || has("gui_win32s")
         set guifont=Consolas:h12
@@ -280,7 +276,7 @@ else
     let g:CSApprox_loaded = 1
 endif
 
-nmap <silent> <Leader>p :NERDTreeToggle<CR>
+map <Leader>d :NERDTreeToggle<CR>
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
@@ -366,3 +362,7 @@ function! s:HighlightLongLines(width)
         echomsg "Usage: HighlightLongLines [natural number]"
     endif
 endfunction
+
+let mapleader = ","
+nmap  <D-r> :CommandT<CR>
+nmap <D-d> :execute 'NERDTreeToggle ' . getcwd()<CR>
